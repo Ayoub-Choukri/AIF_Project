@@ -33,10 +33,10 @@ RUN mkdir -p /app/Data
 RUN wget https://github.com/Ayoub-Choukri/AIF_DATA/releases/download/Data/Data.zip -P /app/Data
 
 # Dézipper le fichier (cela va créer le dossier Data/)
-RUN unzip Data.zip
+RUN unzip /app/Data/Data.zip -d /app/Data
 
 # Supprimer le fichier zip
-RUN rm Data.zip
+RUN rm /app/Data/Data.zip
 
 ####################
 # TÉLÉCHARGEMENT DES POIDS DES MODÈLES
