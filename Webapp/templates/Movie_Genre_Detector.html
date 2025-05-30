@@ -1,0 +1,89 @@
+<!-- Page Movie_Genre_Detector.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Genre Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Movie_Genre_Predictor.css') }}">
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="home-button">Accueil</a>
+        <h1 class="title">Movie Genre Detector</h1>
+      </header>
+      
+    
+    <main>
+        <section class="Working-Area">
+            <div class="Image-Uploading-Area">
+                <label for="image">Upload an image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <button id='submit-btn' type="submit">Submit</button>
+            </div>
+            <div class="Image-Display-Area">
+                <img src="" alt="Image to predict">
+            </div>
+            <!-- Ajout du bouton Predict -->
+            <div class="Predict-Area">
+                <button id="predict-btn">Predict</button>
+            </div>
+            <div class="Prediction-Area">
+                <p>The predicted genre is:</p>
+                <p id="predicted-genre">{{ Best_Genre }}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Genre</th>
+                            <th>Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="action-row">
+                            <td>Action</td>
+                            <td id="action-probability">0%</td>
+                        </tr>
+                        <tr id="animation-row">
+                            <td>Animation</td>
+                            <td id="animation-probability">0%</td>
+                        </tr>
+                        <tr id="comedy-row">
+                            <td>Comedy</td>
+                            <td id="comedy-probability">0%</td>
+                        </tr>
+                        <tr id="documentary-row">
+                            <td>Documentary</td>
+                            <td id="documentary-probability">0%</td>
+                        </tr>
+                        <tr id="drama-row">
+                            <td>Drama</td>
+                            <td id="drama-probability">0%</td>
+                        </tr>
+                        <tr id="fantasy-row">
+                            <td>Fantasy</td>
+                            <td id="fantasy-probability">0%</td>
+                        </tr>
+                        <tr id="horror-row">
+                            <td>Horror</td>
+                            <td id="horror-probability">0%</td>
+                        </tr>
+                        <tr id="romance-row">
+                            <td>Romance</td>
+                            <td id="romance-probability">0%</td>
+                        </tr>
+                        <tr id="science-fiction-row">
+                            <td>Science Fiction</td>
+                            <td id="science-fiction-probability">0%</td>
+                        </tr>
+                        <tr id="thriller-row">
+                            <td>Thriller</td>
+                            <td id="thriller-probability">0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='javascript/Movie_Genre_Predictor.js') }}"></script>
+</body>
+</html>
