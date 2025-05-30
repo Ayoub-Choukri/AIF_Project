@@ -1,0 +1,80 @@
+<!-- Page Text_Based_Movie_Recommender.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Based Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Text_Based_Movie_Recommender.css') }}">
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="home-button">Accueil</a>
+        <h1 class="title">Movie Genre Detector</h1>
+      </header>
+      
+    
+    <main>
+        <section class="Working-Area">
+            <!-- Choix de la technique d'embedding -->
+            <div class="Embedding-Choice-Area">
+                <label for="embedding-technique">Choose an embedding technique:</label>
+                <select id="embedding-technique" name="embedding-technique">
+                    <option value="TFIDF">TFIDF</option>
+                    <option value="WORD2VEC_SPACY">WORD2VEC_SPACY</option>
+                    <option value="DistillBERT">DistillBERT</option>
+                </select>
+                <button id="validate-technique">Validate</button>
+            
+                <!-- Message d'information -->
+                <div class="info-message">
+                    After clicking <strong>Validate</strong>, please wait until two notifications appear:
+                    <ul>
+                        <li>One to confirm the selected recommendation method</li>
+                        <li>Another to indicate that the model is loaded (Fisrt Loading may take some time)</li>
+                    </ul>
+                    ⚠️ The very first recommendation may take a little longer to display.
+                </div>
+            </div>
+
+            <!-- Zone de saisie de la description -->
+            <div class="Description-Area">
+                <label for="movie-description">Enter a movie description:</label><br>
+                <textarea id="movie-description" name="movie-description" rows="6" cols="60" placeholder="Type the movie description here..."></textarea>
+                <br>
+                <button id="submit-description">Get Recommendations</button>
+            </div>
+
+            <!-- Zone d'affichage des recommandations -->
+            <div class="Recommendation-Area">
+                <h2>Recommended Movies:</h2>
+                <div id="recommended-movies">
+                    <!-- Les résultats seront injectés ici -->
+                    <div class="movie-recommendation" id="movie1">
+                        <h3 class="movie-title">Movie 1 Title</h3>
+                        <p class="movie-description">Movie 1 description...</p>
+                    </div>
+                    <div class="movie-recommendation" id="movie2">
+                        <h3 class="movie-title">Movie 2 Title</h3>
+                        <p class="movie-description">Movie 2 description...</p>
+                    </div>
+                    <div class="movie-recommendation" id="movie3">
+                        <h3 class="movie-title">Movie 3 Title</h3>
+                        <p class="movie-description">Movie 3 description...</p>
+                    </div>
+                    <div class="movie-recommendation" id="movie4">
+                        <h3 class="movie-title">Movie 4 Title</h3>
+                        <p class="movie-description">Movie 4 description...</p>
+                    </div>
+                    <div class="movie-recommendation" id="movie5">
+                        <h3 class="movie-title">Movie 5 Title</h3>
+                        <p class="movie-description">Movie 5 description...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='javascript/Text_Based_Movie_Recommender.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Movie_Recommender.css') }}">
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="home-button">Accueil</a>
+        <h1 class="title">Movie Genre Detector</h1>
+      </header>
+      
+    
+    <main>
+        <section class="Working-Area">
+
+            <!-- Zone d'upload d'image -->
+            <div class="Image-Uploading-Area">
+                <label for="image">Upload an image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <button id="submit-btn" type="submit">Submit</button>
+            </div>
+
+            <!-- Zone d'affichage de l'image téléchargée -->
+            <div class="Image-Display-Area">
+                <img id="uploaded-image" src="" alt="Image uploaded for prediction" />
+            </div>
+
+            <!-- Bouton Predict -->
+            <div class="Predict-Area">
+                <button id="predict-btn">Predict</button>
+            </div>
+            
+            <!-- Zone d'affichage des recommandations -->
+            <div class="Recommendation-Area">
+                <h2>Recommended Movies:</h2>
+                <div class="movies-display">
+                    <img id="movie1" src="" alt="Recommended Movie 1">
+                    <img id="movie2" src="" alt="Recommended Movie 2">
+                    <img id="movie3" src="" alt="Recommended Movie 3">
+                    <img id="movie4" src="" alt="Recommended Movie 4">
+                    <img id="movie5" src="" alt="Recommended Movie 5">
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript">
+        var static_url = "{{ url_for('get_recommended_image', filename='') }}";  // URL de base pour les images
+    </script>
+    
+    
+    <script src="{{ url_for('static', filename='javascript/Movie_Recommender.js') }}"></script>
+</body>
+</html>
