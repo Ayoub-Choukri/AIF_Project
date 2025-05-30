@@ -1,0 +1,29 @@
+services:
+  webapp:
+    build:
+      context: ../../
+      dockerfile: Docker/Dockerfiles/Dockerfile.webapp
+    ports:
+      - "5000:5000"
+    environment:
+      - MODEL_API_HOST=model
+      - FLASK_ENV=development
+      - IN_DOCKER=True
+
+  model:
+    build:
+      context: ../../
+      dockerfile: Docker/Dockerfiles/Dockerfile.model
+    ports:
+      - "5001:5001"
+    environment:
+      - WEBAPP_API_HOST=webapp
+      - FLASK_ENV=development
+      - IN_DOCKER=True
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
