@@ -25,8 +25,12 @@ RUN apt-get update && apt-get install -y libgl1-mesa-glx
 # TÉLÉCHARGEMENT DES DONNÉES - PACK COMPLET
 ####################
 
+# Créer le dossier de destination pour les données
+RUN mkdir -p /app/Data
+
+
 # Télécharger le fichier zip complet
-RUN wget https://github.com/Ayoub-Choukri/AIF_DATA/releases/download/Data/Data.zip
+RUN wget https://github.com/Ayoub-Choukri/AIF_DATA/releases/download/Data/Data.zip -P /app/Data
 
 # Dézipper le fichier (cela va créer le dossier Data/)
 RUN unzip Data.zip
