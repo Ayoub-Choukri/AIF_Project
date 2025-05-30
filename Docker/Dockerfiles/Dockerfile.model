@@ -1,0 +1,74 @@
+FROM python:3.12
+
+####################
+# CONFIGURATION DE BASE
+####################
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY Docker/Requirements/requirement_model.txt /app/requirements.txt
+
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install additional system dependencies
+RUN python -m spacy download en_core_web_md
+
+
+# Install Libs 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
+
+####################
+# TÉLÉCHARGEMENT DES DONNÉES - PACK COMPLET
+####################
+
+# Télécharger le fichier zip complet
+RUN wget https://github.com/Ayoub-Choukri/AIF_DATA/releases/download/Data/Data.zip
+
+# Dézipper le fichier (cela va créer le dossier Data/)
+RUN unzip Data.zip
+
+# Supprimer le fichier zip
+RUN rm Data.zip
+
+####################
+# TÉLÉCHARGEMENT DES POIDS DES MODÈLES
+####################
+
+# Créer le dossier de destination
+RUN mkdir -p /app/Saved_Models
+
+# Télécharger le fichier zip des poids
+RUN wget https://github.com/Ayoub-Choukri/AIF_DATA/releases/download/Saved_Models/Saved_Models.zip -P /app/Saved_Models
+
+# Dézipper le fichier
+RUN unzip /app/Saved_Models/Saved_Models.zip -d /app/Saved_Models
+
+# Supprimer le fichier zip
+RUN rm /app/Saved_Models/Saved_Models.zip
+
+####################
+# COPIE DU CODE DE L'APPLICATION
+####################
+
+# Copy the rest of the application code into the container
+COPY . /app
+
+####################
+# CONFIGURATION ET LANCEMENT DE L'APPLICATION
+####################
+
+# Expose the port the app runs on
+EXPOSE 5001
+
+# Set the environment variable for Flask
+ENV FLASK_APP=app.py
+
+# Set the environment variable for Flask to run in development mode
+ENV FLASK_ENV=development
+
+# Run the application
+CMD ["python", "-u","/app/Webapp/Api_Model_Files/Api_Model.py"]
