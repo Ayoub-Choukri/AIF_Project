@@ -1,0 +1,43 @@
+<!-- Page Index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Frameworks Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Index.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AI Frameworks Project</h1>
+    </header>
+    <main>
+        <section class="description">
+            <p>This website is a web demonstration for our AI Frameworks Project.</p>
+            <p>We are:</p>
+            <ul>
+                <li>Ayoub CHOUKRI</li>
+                <li>Axel OLOUGOUNA</li>
+                <li>Qian WANG</li>
+                <li>Minh-Duy NGUYEN</li>
+            </ul>
+
+            <label for="services">Choose the service you want to use:</label>
+            <select id="services" name="services">
+                <option value="">-- Select Service --</option>
+                <option value="Movie_Genre_Predictor">Movie Genre Predictor</option>
+                <option value="Movie_Recommender">Movie Recommender</option>
+                <option value="Text_Based_Movie_Recommender">Text Based Movie Recommender</option>
+                <option value="Interpretable_Movie_Genre_Predictor">Interpretable Movie Genre Predictor</option>
+                <!-- Ajoute d'autres options ici
+                <option value="another_service">Another Service</option> -->
+            </select>
+
+            <!-- Remplacer le lien par un bouton -->
+            <button id="redirect-btn" class="btn-link">Go to prediction</button>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='javascript/Index.js') }}"></script>
+</body>
+</html>
