@@ -16,6 +16,12 @@
     
     <main>
         <section class="Working-Area">
+
+            <!-- Instruction text for image upload and prediction -->
+            <p class="instruction-text">
+                Please upload a movie poster image, then click "Submit" to upload. After the image appears, click "Predict" to get the genre prediction.
+            </p>
+
             <div class="Image-Uploading-Area">
                 <label for="image">Upload an image:</label>
                 <input type="file" id="image" name="image" accept="image/*">
@@ -84,33 +90,38 @@
             </div>
         </section>
 
-        <!-- À insérer AVANT la balise </main> -->
-<div class="Interpretability-Area">
-    <h2>Interprétabilité</h2>
-    
-    <!-- Choix de la méthode -->
-    <div class="Interpret-Method-Choice">
-        <label for="interpret-method">Méthode :</label>
-        <select id="interpret-method" name="interpret-method">
-            <option value="LIME">LIME</option>
-            <option value="Gradients">Gradients</option>
-            <option value="Grad-CAM">Grad-CAM</option>
-        </select>
-        <button id="confirm-method-btn">Validate</button>
-    </div>
+        <!-- Interpretability Section -->
+        <div class="Interpretability-Area">
 
-    <!-- Bouton pour déclencher l'interprétation -->
-    <div class="Interpret-Button-Area">
-        <button id="interpret-btn">Interprer</button>
-    </div>
+            <!-- Instruction text for interpretability -->
 
-    <!-- Affichage de l'image interprétée -->
-    <div class="Interpret-Image-Area">
-        <p>Résultat de l’interprétation :</p>
-        <img id="interpret-image" src="" alt="Interpreted image" style="display: none; max-width: 100%; border: 2px solid #ccc; margin-top: 10px;">
+            
+            <h2>Interpretability</h2>   
+            <p class="instruction-text">
+                Select an interpretability method from the dropdown, validate your choice, then click "Interpret" to see how the model explains its prediction.
+            </p>
+            <!-- Choix de la méthode -->
+            <div class="Interpret-Method-Choice">
+                <label for="interpret-method">Method :</label>
+                <select id="interpret-method" name="interpret-method">
+                    <option value="LIME">LIME</option>
+                    <option value="Gradients">Gradients</option>
+                    <option value="Grad-CAM">Grad-CAM</option>
+                </select>
+                <button id="confirm-method-btn">Validate</button>
+            </div>
 
-    </div>
-</div>
+            <!-- Bouton pour déclencher l'interprétation -->
+            <div class="Interpret-Button-Area">
+                <button id="interpret-btn">Interprer</button>
+            </div>
+
+            <!-- Affichage de l'image interprétée -->
+            <div class="Interpret-Image-Area">
+                <p>Interpretability Result:</p>
+                <img id="interpret-image" src="" alt="Interpreted image" style="display: none; max-width: 100%; border: 2px solid #ccc; margin-top: 10px;">
+            </div>
+        </div>
 
     </main>
     <script src="{{ url_for('static', filename='javascript/Interpretable_Movie_Genre_Predictor.js') }}"></script>

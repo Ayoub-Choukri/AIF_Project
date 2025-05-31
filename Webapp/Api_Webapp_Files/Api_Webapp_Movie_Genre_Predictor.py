@@ -48,7 +48,7 @@ def Prediction_Page_Movie_Genre_Predictor():
         print("❌ Exception lors de l'appel au modèle:", str(e))
 
     # Puis afficher la page HTML
-    return render_template('Movie_Genre_Detector.html')
+    return render_template('Movie_Genre_Predictor.html')
 
 
 

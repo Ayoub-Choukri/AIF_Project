@@ -101,10 +101,12 @@ button:hover {
 .movies-display {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;   /* <-- Remplacé wrap par nowrap */
     gap: 15px;
     margin-top: 20px;
+    overflow-x: auto;    /* optionnel : scroll horizontal si débordement */
 }
+
 
 .movies-display img {
     max-width: 150px;
@@ -147,3 +149,38 @@ button:hover {
     color: white;
   }
   
+
+  .instruction-text {
+    font-style: normal;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 0.03em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    border: 1.5px solid #4CAF50;       /* bord vert doux */
+    background-color: #e8f5e9;          /* fond vert très clair */
+    padding: 12px 20px;                 /* espace intérieur */
+    border-radius: 10px;                /* coins arrondis */
+    max-width: 600px;                   /* largeur max pour ne pas être trop large */
+    margin-left: auto;
+    margin-right: auto;                 /* centrer horizontalement */
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2); /* ombre légère verte */
+}
+
+.movies-display img {
+    width: 150px;           /* taille fixe sympa */
+    height: auto;
+    margin: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.movies-display img:hover {
+    transform: scale(1.05);               /* léger agrandissement */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);  /* ombre portée douce */
+    z-index: 10;                         /* pour passer au-dessus */
+}
