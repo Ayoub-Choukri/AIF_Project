@@ -24,6 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             reader.readAsDataURL(file);
 
+            // Effacer les anciennes images affichées
+            var movieElements = [
+                document.getElementById('movie1'),
+                document.getElementById('movie2'),
+                document.getElementById('movie3'),
+                document.getElementById('movie4'),
+                document.getElementById('movie5')
+            ];
+            
+            movieElements.forEach(function(movieElement) {
+                if (movieElement) {
+                    movieElement.src = ''; // Efface l'image affichée
+                }
+            }
+            );
+
+
             // Optionnel : Envoyer l'image au serveur via fetch (mais ne pas modifier l'affichage)
             var formData = new FormData();
             formData.append('file', file);
